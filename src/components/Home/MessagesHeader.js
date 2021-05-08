@@ -12,7 +12,7 @@ const MessagesHeader = ({
   <Segment inverted className="messages__header">
     <Header fluid="true" as="h2" floated="left" style={{ marginBottom: 0 }}>
       <span>
-        {channelName || 'Loading...'}{' '}
+        {channelName || '#channel'}{' '}
         {!isPrivateChannel && (
           <Icon
             // onClick={handleStar}
@@ -23,7 +23,7 @@ const MessagesHeader = ({
         )}
       </span>
       <Header.Subheader style={{ color: '#eee' }}>
-        {isPrivateChannel ? '2 users' : uniqueUsers || '... ......'}
+        {isPrivateChannel ? '2 users' : uniqueUsers || '0 Users'}
       </Header.Subheader>
     </Header>
 
