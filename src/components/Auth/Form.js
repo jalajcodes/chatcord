@@ -98,11 +98,11 @@ const Form = ({ option, setOption }) => {
     }
   };
 
-  const fillGuestCreds = (e) => {
-    e.preventDefault();
-    emailRef.current.value = 'guest@chatcord.com';
-    passwordRef.current.value = '123456';
-  };
+  // const fillGuestCreds = (e) => {
+  //   e.preventDefault();
+  //   emailRef.current.value = 'guest@chatcord.com';
+  //   passwordRef.current.value = '123456';
+  // };
 
   return (
     <form className="account-form" onSubmit={handleSubmit}>
@@ -149,7 +149,7 @@ const Form = ({ option, setOption }) => {
           ? 'Sign up'
           : 'Reset password'}
       </Button>
-      <Button
+      {/* <Button
         type="button"
         color="orange"
         fluid
@@ -160,7 +160,7 @@ const Form = ({ option, setOption }) => {
         onClick={fillGuestCreds}
       >
         Guest Credentials
-      </Button>
+      </Button> */}
     </form>
   );
 };
