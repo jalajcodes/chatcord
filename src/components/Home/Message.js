@@ -17,7 +17,7 @@ const Message = forwardRef(({ message, user }, ref) => {
     <div ref={ref}>
       <Comment className={isOwnMessage(message, user)}>
         <Comment.Avatar src={message.user.avatar} />
-        <Comment.Content>
+        <Comment.Content style={{ overflow: 'hidden' }}>
           <Comment.Author as="a">{message.user.name}</Comment.Author>
           <Comment.Metadata>{timeFromNow(message.timestamp)}</Comment.Metadata>
           {isImage() ? (

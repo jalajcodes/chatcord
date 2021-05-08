@@ -41,7 +41,7 @@ const MessageForm = ({ messagesRef, currentChannel, currentUser, isPrivateChanne
   };
 
   const sendMessage = async () => {
-    if (message) {
+    if (message.trim().length > 0) {
       setLoading(true);
       try {
         await messagesRef.child(currentChannel.id).push().set(createMessage());

@@ -23,6 +23,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+img {
+  width: 100%;
+}
 #root {
   height: 100%;
   box-sizing: border-box;
@@ -36,23 +39,6 @@ code {
   color: #fff;
   padding: 1em;
   margin-top: 0;
-  /* overflow: scroll; */
-}
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  margin-top: 80px;
-  border-radius: 0px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #09299c;
-  border-radius: 10px;
 }
 .app-container {
   height: 100%;
