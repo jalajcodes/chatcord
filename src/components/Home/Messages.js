@@ -12,7 +12,6 @@ import { setUserPosts } from '../../actions';
 const Messages = ({ currentChannel: channel, currentUser: user, isPrivateChannel }) => {
   const messagesRef = useRef(firebase.database().ref('messages')).current;
   const privateMessagesRef = useRef(firebase.database().ref('privateMessages')).current;
-  // const usersRef = useRef(firebase.database().ref('users')).current;
   const [messages, setMessages] = useState([]);
   const [uniqueUsers, setUniqueUsers] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
@@ -127,52 +126,9 @@ const Messages = ({ currentChannel: channel, currentUser: user, isPrivateChannel
     return () => getMessagesRef().off();
   }, [channel, user, getMessagesRef, countUserPosts]);
 
-  // const starChanel = () => {
-  //   if (channel && user) {
-  //     if (!isChannelStarred) {
-  //       usersRef.child(`${user.uid}/starred`).update({
-  //         [channel.id]: {
-  //           name: channel.name,
-  //           about: channel.about,
-  //           createdBy: {
-  //             name: channel.createdBy.name,
-  //             avatar: channel.createdBy.avatar,
-  //           },
-  //         },
-  //       });
-  //     } else {
-  //       usersRef
-  //         .child(`${user.uid}/starred`)
-  //         .child(channel.id)
-  //         .remove((err) => {
-  //           if (err !== null) {
-  //             console.error(err);
-  //           }
-  //         });
-  //     }
-  //   }
-  // };
-
   const handleStar = () => {
     setIsChannelStarred((prev) => !prev);
-    // starChanel();
   };
-
-  // useEffect(() => {
-  //   if (user && channel) {
-  //     usersRef
-  //       .child(user.uid)
-  //       .child('starred')
-  //       .once('value')
-  //       .then((data) => {
-  //         if (data.val() !== null) {
-  //           const channelIds = Object.keys(data.val());
-  //           const alreadyStarred = channelIds.includes(channel.id);
-  //           setIsChannelStarred(alreadyStarred);
-  //         }
-  //       });
-  //   }
-  // }, []);
 
   return (
     <>
@@ -210,57 +166,3 @@ const Messages = ({ currentChannel: channel, currentUser: user, isPrivateChannel
 };
 
 export default Messages;
-
-// import { Segment, Comment } from 'semantic-ui-react';
-// import { useRef, useEffect, useState } from 'react';
-// import FlipMove from 'react-flip-move';
-// import MessagesHeader from './MessagesHeader';
-// import MessageForm from './MessageForm';
-// import firebase from '../../firebase';
-// import Message from './Message';
-
-// const Messages = ({ currentUser, currentChannel }) => {
-//   const messagesRef = useRef(firebase.database().ref('messages')).current;
-
-//   const [messages, setMessages] = useState([]);
-//   const [messagesLoading, setMessagesLoading] = useState(true);
-
-//   useEffect(() => {
-//     if (currentChannel && messages) {
-//       const loadedMessages = [];
-//       messagesRef.child(currentChannel.id).on('child_added', async (snap) => {
-//         const messageData = snap.val();
-//         loadedMessages.push(messageData);
-//         console.log('🚀 ~ loadedMessages', loadedMessages);
-//         console.log('🚀 ~ messagesData', messageData);
-//       });
-//       setMessages(loadedMessages);
-//       setMessagesLoading(false);
-//     }
-//   }, [currentChannel, messagesRef]);
-
-//   return (
-//     <div className="messages-wrapper">
-//       <MessagesHeader />
-
-//       <Segment className="messages">
-//         <Comment.Group>
-//           <FlipMove appearAnimation="fade" leaveAnimation="elevator">
-//             {messages.length > 0 &&
-//               messages.map((message) => (
-//                 <Message key={message.timestamp} message={message} user={currentUser} />
-//               ))}
-//           </FlipMove>
-//         </Comment.Group>
-//       </Segment>
-
-//       <MessageForm
-//         messagesRef={messagesRef}
-//         currentChannel={currentChannel}
-//         currentUser={currentUser}
-//       />
-//     </div>
-//   );
-// };
-
-// export default Messages;
