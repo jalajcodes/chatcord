@@ -34,7 +34,7 @@ const MessagesHeader = ({
         size="mini"
         icon="search"
         name="searchTerm"
-        placeholder="Search Messages or Users"
+        placeholder="Search Messages"
       />
     </Header>
   </Segment>

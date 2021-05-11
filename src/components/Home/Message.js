@@ -8,7 +8,7 @@ const isOwnMessage = (message, user) => (message.user.id === user.uid ? 'message
 const timeFromNow = (timestamp) =>
   formatDistance(new Date(timestamp), new Date(), { addSuffix: true });
 
-const Message = forwardRef(({ message, user }, ref) => {
+const Message = forwardRef(({ message, user, imageLoaded }, ref) => {
   const isImage = () =>
     Object.prototype.hasOwnProperty.call(message, 'image') &&
     !Object.prototype.hasOwnProperty.call(message, 'content');
@@ -21,7 +21,7 @@ const Message = forwardRef(({ message, user }, ref) => {
           <Comment.Author as="a">{message.user.name}</Comment.Author>
           <Comment.Metadata>{timeFromNow(message.timestamp)}</Comment.Metadata>
           {isImage() ? (
-            <Image src={message.image} className="message__image" />
+            <Image onLoad={imageLoaded} src={message.image} className="message__image" />
           ) : (
             <Comment.Text>
               <ReactMarkdown>{message.content}</ReactMarkdown>

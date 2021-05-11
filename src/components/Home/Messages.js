@@ -50,6 +50,10 @@ const Messages = ({ currentChannel: channel, currentUser: user, isPrivateChannel
     }
   }, [searchTerm, messages]);
 
+  useEffect(() => {
+    messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
   const countUniqueUsers = (messages) => {
     const uniqueUsers = messages.reduce((acc, message) => {
       if (!acc.includes(message.user.name)) {
@@ -86,9 +90,15 @@ const Messages = ({ currentChannel: channel, currentUser: user, isPrivateChannel
     privateMessagesRef,
   ]);
 
+  const imageLoaded = () => {
+    messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const displayMessages = (messages) =>
     messages &&
-    messages.map((message) => <Message key={message.timestamp} message={message} user={user} />);
+    messages.map((message) => (
+      <Message imageLoaded={imageLoaded} key={message.timestamp} message={message} user={user} />
+    ));
 
   const displayChannelName = (channel) =>
     channel ? `${isPrivateChannel ? '@' : '#'}${channel.name}` : '';
@@ -116,10 +126,6 @@ const Messages = ({ currentChannel: channel, currentUser: user, isPrivateChannel
 
     return () => getMessagesRef().off();
   }, [channel, user, getMessagesRef, countUserPosts]);
-
-  useEffect(() => {
-    messageEndRef.current.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
 
   // const starChanel = () => {
   //   if (channel && user) {
