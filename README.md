@@ -1,6 +1,6 @@
 # 🚀 Chatcord
 
-Chat app created using React, Redux, Firebase and Semantic UI. https://chatcord.web.app
+Chat app created using React, Redux, Firebase & Semantic UI. https://chatcord.web.app
 
 ## ✨ Features
 
