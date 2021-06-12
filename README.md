@@ -51,16 +51,23 @@ Follow these instructions to set up the project on your local machine.
 
 1. Clone the repository.
 
-`git clone https://github.com/jalajcodes/chatcord`
+```bash
+git clone https://github.com/jalajcodes/chatcord
+```
+
 
 2. Install Packages
 
-`cd chatcord && yarn`
+```bash 
+cd chatcord && yarn 
+```
 
 3. Create a new firebase project and get your firebase app configuration and add it in `src/firebase.js`.
 4. Start the app
 
-`yarn start`
+```bash 
+yarn start 
+```
 
 ## Todo
 
