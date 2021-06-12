@@ -4,13 +4,13 @@ import 'firebase/database';
 import 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAoa4PTwF9tHfWDe0DAsmwabBvstCvRp-I',
-  authDomain: 'chatcordd.firebaseapp.com',
-  projectId: 'chatcordd',
-  storageBucket: 'chatcordd.appspot.com',
-  messagingSenderId: '868806620871',
-  databaseURL: 'https://chatcordd-default-rtdb.europe-west1.firebasedatabase.app',
-  appId: '1:868806620871:web:f64dc0a698284bec3530e2',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  databaseURL: process.env.DATABASE_URL,
+  appId: process.env.APP_ID,
 };
 
 firebase.initializeApp(firebaseConfig);
