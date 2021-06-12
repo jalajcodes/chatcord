@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import AvatarEditor from 'react-avatar-editor';
+import { v4 as uuidV4 } from 'uuid';
 import { Dropdown, Grid, Header, Icon, Image, Modal, Input, Button } from 'semantic-ui-react';
 import firebase from '../../firebase';
 
@@ -68,7 +69,7 @@ const UserPanel = ({ currentUser }) => {
 
   const uploadCroppedImage = async () => {
     const uploadedImage = await storageRef
-      .child(`avatars/user/${currentUserRef.uid}`)
+      .child(`avatars/user/${currentUserRef.uid}/${uuidV4()}.jpg`)
       .put(blob, metaData);
     const downloadUrl = await uploadedImage.ref.getDownloadURL();
     setUploadedCroppedImage(downloadUrl);
@@ -80,7 +81,6 @@ const UserPanel = ({ currentUser }) => {
       text: (
         <span>
           <strong>{currentUser.email}</strong>
-          {/* Signed in as <strong>{user.displayName}</strong> */}
         </span>
       ),
       disabled: true,
@@ -174,6 +174,7 @@ const UserPanel = ({ currentUser }) => {
                 <Grid.Column>
                   {croppedImage && (
                     <Image
+                      className="cropped-image"
                       style={{ margin: '3.5em auto' }}
                       width={100}
                       height={100}

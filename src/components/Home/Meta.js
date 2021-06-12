@@ -42,7 +42,6 @@ const Meta = ({ isPrivateChannel, currentChannel, userPosts }) => {
           About #{currentChannel.name}
         </Header>
       </Segment>
-      {/* <Segment> */}
       <Accordion className="meta__segment" styled attached="true" style={{ marginTop: 0 }}>
         <Accordion.Title active={activeIndex === 0} index={0} onClick={handleActiveIndex}>
           <Icon name="dropdown" />
@@ -72,7 +71,6 @@ const Meta = ({ isPrivateChannel, currentChannel, userPosts }) => {
           </Header>
         </Accordion.Content>
       </Accordion>
-      {/* </Segment> */}
     </>
   );
 };
